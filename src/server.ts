@@ -1,5 +1,6 @@
 import express from 'express'
-import routes from './app/routes/routes'
+import { routes } from './app/routes/routes'
+
 const app = express()
 
 app.use(express.json())

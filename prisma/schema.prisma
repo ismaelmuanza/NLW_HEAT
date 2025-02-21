@@ -10,32 +10,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Product {
-  id              String            @id @default(uuid())
-  name            String
-  bar_code        String            @unique
-  price           Decimal
-  created_at      DateTime          @default(now())
-  ProductCategory ProductCategory[]
+model User {
+  id    String     @id @default(uuid())
+  name  String
+  email String  @unique
+  admin Boolean
 
-  @@map("products")
-}
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
 
-model Category {
-  id              String            @id @default(uuid())
-  name            String            @unique
-  ProductCategory ProductCategory[]
-
-  @@map("categories")
-}
-
-model ProductCategory {
-  id String @id @default(uuid())
-
-  id_product  String
-  product     Product  @relation(fields: [id_product], references: [id])
-  id_category String
-  category    Category @relation(fields: [id_category], references: [id])
-
-  @@map("products_categories")
+  @@map("users")
 }
