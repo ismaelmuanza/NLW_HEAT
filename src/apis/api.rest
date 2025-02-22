@@ -1,15 +1,47 @@
-
+# users
 
 ### GET users
-GET http://localhost:4000
+GET http://localhost:4000/users
 
-### POST products
+### GET users by email
+GET http://localhost:4000/user/futa@gmail.com
+
+### POST create user
 POST http://localhost:4000/user
 Content-Type: application/json
 Authorization: Bearer ACCESS-TOKEN
 
 {
-   "name":"Ismael Muanza",
-   "email": "ismaelmuanza@gmail.com",
+   "name":"Emiliano Victoriano",
+   "email": "victoriano@gmail.com",
    "admin": true
+ }
+
+### POST user by email
+POST http://localhost:4000/user/email
+Content-Type: application/json
+Authorization: Bearer ACCESS-TOKEN
+
+{
+   "email": "victoriano@gmail.com"
+ }
+
+
+#  tags
+### POST tag
+POST http://localhost:4000/tag
+Content-Type: application/json
+Authorization: Bearer ACCESS-TOKEN
+
+{
+   "name": "kind"
+ }
+
+### POST find tag by name
+POST http://localhost:4000/tag/name
+Content-Type: application/json
+Authorization: Bearer ACCESS-TOKEN
+
+{
+   "name": "fantastic"
  }
