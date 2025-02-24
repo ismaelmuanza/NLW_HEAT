@@ -12,7 +12,7 @@ export class FindUsersController {
             response.status(200).json(users)
 
         } catch (err) {
-            response.status(500).json(err)
+            return response.status(500).json(err)
         }
         
     }

@@ -4,6 +4,7 @@ import { prismaClient } from "../../database/prismaClient"
 export interface CreateUserDTO {
     name: string
     email: string
+    password: string
     admin?: boolean
 }
 
@@ -14,12 +15,13 @@ export interface FindByEmailDTO {
 export class UserRepository {
 
     // create user
-    async createUser ({name, email, admin}:CreateUserDTO) {
+    async createUser ({name, email, password, admin}:CreateUserDTO) {
 
         const user = await prismaClient.user.create({
             data: {
                 name, 
                 email,
+                password,
                 admin
             }
         })
@@ -36,6 +38,7 @@ export class UserRepository {
                 id: true,
                 name: true,
                 email: true,
+                password: true,
                 admin: true
             }
         })
@@ -55,5 +58,21 @@ export class UserRepository {
         })
 
         return users
+    }
+
+    // find user by id
+      // find users
+      async findUserById (id: string) {
+        const user = await prismaClient.user.findUnique({
+            where: {id},
+            select: {
+                id: true,
+                name: true,
+                email: true,
+                admin: true
+            }
+        })
+
+        return user
     }
 }

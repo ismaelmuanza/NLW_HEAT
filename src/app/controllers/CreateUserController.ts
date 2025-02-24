@@ -8,10 +8,10 @@ export class CreateUserController {
      
         try {
                
-        const {name, email, admin}:CreateUserDTO = request.body
+        const {name, email, password, admin}:CreateUserDTO = request.body
 
         const createUserService = new CreateUserService() 
-        const user = await createUserService.execute({name, email, admin})
+        const user = await createUserService.execute({name, email, password, admin})
 
         response.status(201)
         response.json(user)

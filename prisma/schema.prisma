@@ -14,10 +14,13 @@ model User {
   id    String     @id @default(uuid())
   name  String
   email String  @unique
-  admin Boolean
-
+  password String
+  admin Boolean @default(false)
   created_at DateTime @default(now())
-  updated_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  sentCompliments Compliments[] @relation("SenderRelation")
+  receivedCompliments Compliments[] @relation("ReceivedRelation")
 
   @@map("users")
 }
@@ -25,9 +28,26 @@ model User {
 model Tag {
   id String @id @default(uuid())
   name String @unique
-
   created_at DateTime @default(now())
-  updated_at DateTime @default(now())
+
+  compliments Compliments[]
 
   @@map("tags")
+}
+
+model Compliments {
+  id String @id @default(uuid())
+  id_user_sender String
+  id_user_receiver String
+  id_tag String
+
+  userSender User @relation("SenderRelation", fields: [id_user_sender], references: [id])
+  userReceiver User @relation("ReceivedRelation", fields: [id_user_receiver], references: [id])
+  tag Tag @relation(fields: [id_tag], references: [id])
+
+  message String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("compliments")
 }

@@ -1,6 +1,6 @@
 # users
 
-### GET users
+### GET find users
 GET http://localhost:4000/users
 
 ### GET users by email
@@ -12,18 +12,40 @@ Content-Type: application/json
 Authorization: Bearer ACCESS-TOKEN
 
 {
-   "name":"Emiliano Victoriano",
-   "email": "victoriano@gmail.com",
+   "name":"Miguel Futa",
+   "email": "futan@gmail.com",
+   "password": "1234",
    "admin": true
+   
  }
 
-### POST user by email
+### POST find user by email
 POST http://localhost:4000/user/email
 Content-Type: application/json
 Authorization: Bearer ACCESS-TOKEN
 
 {
    "email": "victoriano@gmail.com"
+ }
+
+### POST find user by id
+POST http://localhost:4000/user/id
+Content-Type: application/json
+Authorization: Bearer ACCESS-TOKEN
+
+{
+   "id": "a820ad01-c312-499e-947e-1eb8bbfb5418"
+ }
+
+
+### POST authenticate user < /login  >
+POST http://localhost:4000/login
+Content-Type: application/json
+Authorization: Bearer ACCESS-TOKEN
+
+{
+    "email": "ismaelmuanza@gmail.com",
+    "password": "0000"
  }
 
 
@@ -44,4 +66,17 @@ Authorization: Bearer ACCESS-TOKEN
 
 {
    "name": "fantastic"
+ }
+
+
+### POST create complit 
+POST http://localhost:4000/compliment
+Content-Type: application/json
+Authorization: Bearer ACCESS-TOKEN
+
+{
+   "id_user_sender": "fantastic",
+   "id_user_receiverr": "fantastic",
+   "id_tag": "fantastic",
+   "message": "fantastic"
  }

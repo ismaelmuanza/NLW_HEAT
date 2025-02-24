@@ -1,9 +1,10 @@
 import { CreateUserDTO, UserRepository } from "../repositories/UsersRepository";
+import {hash} from 'bcrypt'
 
 const userRepository = new UserRepository()
 
 export class CreateUserService {
-    async execute ({name, email, admin}:CreateUserDTO) {
+    async execute ({name, email, password, admin = false}:CreateUserDTO) {
 
 
         const findUserByEmail = new UserRepository()
@@ -14,6 +15,11 @@ export class CreateUserService {
             throw new Error('User Already Exists')
         }
 
-        await userRepository.createUser({name, email, admin})
+        const saltBcrypt = 8
+        
+        const passwordHash = await hash(password, saltBcrypt)
+
+        const user = await userRepository.createUser({name, email, password: passwordHash, admin})
+        return user
     }
 }
