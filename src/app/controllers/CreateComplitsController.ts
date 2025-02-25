@@ -7,7 +7,6 @@ export class CreateComplitsController {
         try { 
             const {id_user_receiver, id_tag, message} = request.body
             const {id_user} = request
-            console.log(id_user)
 
             const createComplimentService = new CreateComplimentService()
             const compliment = await createComplimentService.execute({id_user_sender: id_user, id_user_receiver, id_tag, message})
