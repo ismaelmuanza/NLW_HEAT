@@ -1,6 +1,7 @@
 import { Request, Response, Router } from "express";
 import { FindComplimentByIdController } from "../controllers/FindComplimentByIdController";
 import { CreateComplitsController } from "../controllers/CreateComplitsController";
+import { userAuthenticate } from "../middlewares/userAuthenticate";
 
 
 const complimentsRoutes = Router()
@@ -13,7 +14,7 @@ complimentsRoutes.post('/compliment/id', (request: Request, response: Response) 
     findComplimentByIdController.handle(request, response)
 })
 // create compliment
-complimentsRoutes.post('/compliment', (request: Request, response: Response) => {
+complimentsRoutes.post('/compliment', userAuthenticate, (request: Request, response: Response) => {
     createComplimentController.handle(request, response)
 })
 

@@ -1,12 +1,19 @@
 import { NextFunction, Request, Response } from "express";
+import { UserRepository } from "../repositories/UsersRepository";
 
-export function unsureAdmin (request: Request, response: Response, next: NextFunction): void {
-    let admin = false
+export async function unsureAdmin (request: Request, response: Response, next: NextFunction): Promise<void> {
+    // const admin = true
+    const userRepository = new UserRepository()
+    const {id_user} = request
 
-    if(admin) {
-     next()
-     return
+    const {admin} = await userRepository.findUserById(id_user)
+
+
+    if(!admin) {
+        response.status(401).json({err: 'User Unauthorized'})
+        return
     }
-
-    response.status(401).json({err: 'User Unauthorized'})
+    
+    next()
+    
 }

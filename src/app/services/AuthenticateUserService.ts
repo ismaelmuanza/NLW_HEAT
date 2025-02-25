@@ -7,6 +7,8 @@ interface AuthenticateData {
     password: string
 }
 
+const JWTSecret = 'HH22@77&JHSJHHS09.K-,HHJDSD+SD'
+
 export class AuthenticateUserService {
     async execute({email, password}: AuthenticateData) {
         const userRepository = new UserRepository()
@@ -23,11 +25,10 @@ export class AuthenticateUserService {
             throw new Error('Email or Password Incorrect')
         }
 
-        const JWTSecret = 'HH22@77&JHSJHHS09.K-,HHJDSD+SD'
+        
         const token = sign(
             {
-            email: user.email,
-            admin: user.admin
+            email: user.email
         }, JWTSecret, 
         {
             subject: user.id,
@@ -38,3 +39,5 @@ export class AuthenticateUserService {
 
     }
 }
+
+export { JWTSecret }

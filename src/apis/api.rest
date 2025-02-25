@@ -12,8 +12,8 @@ Content-Type: application/json
 Authorization: Bearer ACCESS-TOKEN
 
 {
-   "name":"Miguel Futa",
-   "email": "futan@gmail.com",
+   "name":"Ismael Muanza",
+   "email": "ismaelmuanza@gmail.com",
    "password": "1234",
    "admin": true
    
@@ -44,16 +44,16 @@ Content-Type: application/json
 Authorization: Bearer ACCESS-TOKEN
 
 {
-    "email": "ismaelmuanza@gmail.com",
-    "password": "0000"
+    "email": "victoriano@gmail.com",
+    "password": "1234"
  }
 
+# tags
 
-#  tags
-### POST tag
+### POST create tag
 POST http://localhost:4000/tag
 Content-Type: application/json
-Authorization: Bearer ACCESS-TOKEN
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY3Rvcmlhbm9AZ21haWwuY29tIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE3NDA0OTQzNzQsImV4cCI6MTc0MDU4MDc3NCwic3ViIjoiYTcyYWUyOTEtOTA5My00MjdmLWI3NWQtMmNmMWNiYmE0MmVjIn0.v1rXi-CuOidqCgtEwKj9ccbiX1C8Xa4Oj5qN6AENPhg
 
 {
    "name": "kind"
@@ -72,11 +72,10 @@ Authorization: Bearer ACCESS-TOKEN
 ### POST create complit 
 POST http://localhost:4000/compliment
 Content-Type: application/json
-Authorization: Bearer ACCESS-TOKEN
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY3Rvcmlhbm9AZ21haWwuY29tIiwiaWF0IjoxNzQwNDk1Nzk5LCJleHAiOjE3NDA1ODIxOTksInN1YiI6ImE3MmFlMjkxLTkwOTMtNDI3Zi1iNzVkLTJjZjFjYmJhNDJlYyJ9.B2Y1hOZC4dkD9gHpdwmTpoob5f2JZjh5Elp2rbLGptg
 
 {
-   "id_user_sender": "fantastic",
-   "id_user_receiverr": "fantastic",
-   "id_tag": "fantastic",
-   "message": "fantastic"
+   "id_user_receiver": "2c954ec5-52ae-4916-a37d-5444f0cee86d",
+   "id_tag": "7fab0628-f3a4-444d-b51f-50e06813d14f",
+   "message": "You are incredible, I want be like you when I grown up"
  }
